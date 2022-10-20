@@ -1,5 +1,3 @@
-const { ar } = require('date-fns/locale')
-
 const data = {
   employees: require('../data/employees.json'),
   setEmployees: function (data) {

@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const fsPromises = require('fs').promises
 const path = require('path')
-require('dotenv').config()
 
 const handleLogin = async (req, res) => {
   const { username, password } = req.body
@@ -18,6 +17,8 @@ const handleLogin = async (req, res) => {
   const foundUser = usersDB.users.find((user) => user.username === username)
   if (!foundUser) return res.sendStatus(401)
 
+  const roles = Object.values(foundUser.roles) // Convert to array
+
   const salt = await bcrypt.genSalt(15)
   const newHashedPassword = await bcrypt.hash(foundUser.password, salt)
 
@@ -25,7 +26,9 @@ const handleLogin = async (req, res) => {
 
   if (isMatch) {
     const accessToken = jwt.sign(
-      { username: foundUser.username },
+      {
+        UserInfos: { username: foundUser.username, roles },
+      },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: '1m' }
     )

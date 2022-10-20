@@ -20,13 +20,12 @@ const handleNewUser = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10)
-    const newUser = { username, password: hashedPassword }
+    const newUser = { username, password: hashedPassword, roles: { User: 2001 } }
 
     usersDB.setUsers([...usersDB.users, newUser])
 
     await writeFile(path.join(__dirname, '..', 'data', 'users.json'), JSON.stringify(usersDB.users))
     console.log(`New user ${newUser.username} is created`)
-    console.log(usersDB.users)
     res.status(201).json({ message: 'Success! New user created.' })
   } catch (error) {
     return res.status(500).json({ message: 'ERROR: Could not create new user' })
