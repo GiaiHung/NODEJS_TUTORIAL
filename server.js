@@ -5,6 +5,7 @@ const path = require('path')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
+
 const db = require('./config/dbConnect')
 const credentials = require('./middleware/credentials')
 const { logger } = require('./middleware/logEvents')

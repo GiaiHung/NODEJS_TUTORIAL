@@ -4,3 +4,12 @@
 20221018	20:27:02	0b5fc18a-0b4b-4276-87cb-a418bc025ee3	Cannot read properties of undefined (reading 'split'): Cannot read properties of undefined (reading 'split')
 20221018	20:27:29	30edc643-7e96-4c13-8a58-ab23de0ff5ed	Cannot read properties of undefined (reading 'split'): Cannot read properties of undefined (reading 'split')
 20221018	20:46:33	e508cb73-a701-4170-adb8-7bb7a60a343b	Cannot access 'token' before initialization: Cannot access 'token' before initialization
+20221021	08:21:59	d64793d4-2f5b-4d5c-900b-28c44cc888b0	Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
